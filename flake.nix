@@ -8,21 +8,20 @@
       "nix-command"
       "flakes"
     ];
-    extra-substituters = [ "https://cache.xinux.uz/" ];
-    extra-trusted-public-keys = [ "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0=" ];
+    extra-substituters = ["https://cache.xinux.uz/"];
+    extra-trusted-public-keys = ["cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="];
     allow-import-from-derivation = true;
   };
   inputs = {
     nixpkgs.url = "github:xinux-org/nixpkgs/nixos-25.11";
 
     nixpkgs-unstable.url = "github:xinux-org/nixpkgs/nixos-unstable";
-    
+
     # Pre commit hooks for git
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs = {
@@ -30,20 +29,27 @@
     nixpkgs,
     flake-utils,
     ...
-  } @ inputs: let
-    # Self instance pointer
-    outputs = self;
-  in
+  } @ inputs:
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-        {
-          devShells.default = import ./shell.nix {inherit pkgs;};
-        }
-    ) // {
+      in {
+        formatter = pkgs.nixfmt;
+        devShells.default = import ./shell.nix {inherit pkgs;};
+      }
+    )
+    // {
       lib = nixpkgs.lib;
       # nixosModules = import ./modules/nixos;
 
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            # > Our main nixos configuration file <
+            ./hosts/sholcha/configuration.nix
+          ];
+        };
+      };
     };
 }
