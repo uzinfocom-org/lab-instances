@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   config,
   lib,
@@ -146,6 +143,26 @@
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
+    };
+  };
+
+  # nginx
+  services.nginx = {
+    enable = true;
+
+    virtualHosts.localhost = {
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 80;
+        }
+      ];
+      locations."/" = {
+        return = "200 '<html><body>It works</body></html>'";
+        extraConfig = ''
+          default_type text/html;
+        '';
+      };
     };
   };
 
