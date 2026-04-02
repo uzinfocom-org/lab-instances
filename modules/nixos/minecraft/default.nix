@@ -25,8 +25,8 @@
       motd = "NixOS Minecraft server!";
       white-list = true;
       allow-cheats = true;
-      view-distance = 15;
+      view-distance = 30;
     };
-    jvmOpts = "-Xms2048M -Xmx8G";
+    jvmOpts = "-Xms2048M -Xmx10G";
   };
 }
