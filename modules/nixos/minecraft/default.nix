@@ -12,7 +12,9 @@
     declarative = true;
     whitelist = {
       username1 = "3e220001-9544-48bb-8fd0-ca7139727207";
-      username2 = "75b46c6c-bdbd-42ce-818e-43e94af0c043";
+      wolf4am = "75b46c6c-bdbd-42ce-818e-43e94af0c043";
+      akmal = "8fac1980-4242-4e3f-8efc-cf7c8c969dbf";
+      let_rec = "9298739e-1971-4482-99d3-2e6020955416";
     };
 
     serverProperties = {
