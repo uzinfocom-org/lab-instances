@@ -2,10 +2,11 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.garage = {
     enable = true;
-    package = pkgs.garage;
+    package = pkgs.garage_2;
 
     settings = {
       replication_mode = "2";
@@ -18,6 +19,11 @@
       s3_api = {
         s3_region = "garage";
         bind_addr = "0.0.0.0:3900";
+      };
+
+      admin = {
+        api_bind_addr = "0.0.0.0:3903";
+        admin_token = "";
       };
     };
   };

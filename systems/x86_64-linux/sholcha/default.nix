@@ -28,23 +28,12 @@
   # Set your time zone.
   time.timeZone = "Asia/Tashkent";
 
-  # for minecraft server
-  # nixpkgs.config.allowUnfree = true;
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git
-    fastfetch
-    vscode
-    garage-webui
-  ];
 
   # List services that you want to enable:
 
