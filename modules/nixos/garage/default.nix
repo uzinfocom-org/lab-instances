@@ -9,7 +9,7 @@
     package = pkgs.garage_2;
 
     settings = {
-      replication_mode = "2";
+      replication_factor = 3;
       data_dir = "/var/lib/garage/data";
       metadata_dir = "/var/lib/garage/meta";
 
