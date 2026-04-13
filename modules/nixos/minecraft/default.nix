@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.minecraft-server = {
     package = pkgs.minecraftServers.vanilla-1-21;
     enable = true;
@@ -18,7 +19,7 @@
     };
 
     serverProperties = {
-      server-port = 25565;
+      server-port = 80;
       difficulty = 3;
       gamemode = 1;
       max-players = 10;
