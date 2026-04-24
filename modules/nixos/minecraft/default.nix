@@ -22,7 +22,7 @@
       server-port = 4243;
       difficulty = 3;
       gamemode = "survival";
-      force-gamemode = false;
+      force-gamemode = true;
       max-players = 10;
       motd = "NixOS Minecraft server!";
       white-list = false;
