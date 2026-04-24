@@ -21,7 +21,7 @@
     serverProperties = {
       server-port = 4243;
       difficulty = 3;
-      gamemode = 1;
+      gamemode = 3;
       max-players = 10;
       motd = "NixOS Minecraft server!";
       white-list = false;
