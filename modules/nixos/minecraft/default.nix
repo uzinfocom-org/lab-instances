@@ -19,7 +19,7 @@
     # };
 
     serverProperties = {
-      server-port = 80;
+      server-port = 4243;
       difficulty = 3;
       gamemode = 1;
       max-players = 10;
